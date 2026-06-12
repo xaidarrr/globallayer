@@ -7,16 +7,16 @@
 3. Add directory to your build
 For example add this to the end of **device/google/cuttlefish/shared/auto/device_vendor.mk** if you want build car image:
 >PRODUCT_SOONG_NAMESPACE += globallayer
-PRODUCT_PACKAGES += \\
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ntop \\
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;libncurses
+>PRODUCT_PACKAGES += \\
+>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ntop \\
+>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;libncurses
 
 4. Configure sepolicy:
 - Add this at the end of file_contexts:
 > /vendor/bin/ntop u:object_r:ntop_exec:s0
 - Create ntop.te file and add this there:
 >type ntop, domain;
-type ntop_exec, exec_type, vendor_file_type, file_type;
+>type ntop_exec, exec_type, vendor_file_type, file_type;
 >
 >domain_auto_trans(shell, ntop_exec, ntop)
 >
